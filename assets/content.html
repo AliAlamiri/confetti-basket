@@ -1,0 +1,266 @@
+<h1>General Comments</h1>
+
+<p>Start writing from here.</p>
+
+<p>Some major themes from our Facebook Group:</p>
+
+<ul>
+<li>Too much focus on writing code as opposed to theory.</li>
+<li>Syntactical Mistakes that caused a lot of confusion.</li>
+</ul>
+
+<p>Various other errors as outlined below:</p>
+
+<h1>Question 1</h1>
+
+<blockquote>
+  <p>Mention your comments as a block quote like this. Inserted for your
+convenience before every question.</p>
+</blockquote>
+
+<p>A class has been defined that deals with the weights of characters in a role playing game using the imperial system (where there are 14 pounds in a stone). The implementations of the operators use only simple integer arithmetic and assume the compiler turns integers into a class constant using the Weight constructor when it is appropriate to do so. The class header file is as follows (you may assume appropriate header guards will be inserted).</p>
+
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+class Weight
+{
+public:
+    Weight(const int = 0, const int = 0);
+    Weight(const int = 0);
+    int totalPounds();
+    Weight operator+(const Weight);
+    Weight operator++();
+    Weight operator++(int);
+    private:
+    int stones;
+    int pounds
+};
+
+void operator&lt;&lt;(ostream&amp; os, const Weight&amp;);
+</code></pre>
+
+<blockquote>
+  <p>b++ lacking semicolon. This seemed to create a lot of confusion
+since header file was supposed to be the one that was to be fixed.</p>
+</blockquote>
+
+<p>a) Consider the following segment of code from a main function and
+identify which lines of code will result in errors and explain
+why. Amend the header file to remove the errors.</p>
+
+<pre><code>Weight a(12);
+const Weight b(15, 3);
+const int FIXED_WEIGHT = b.totalPounds();
+Weight combined = a + b;
+++a;
+</code></pre>
+
+<p><code class="error">
+<!-- Wrap code segments with error as follows so -->
+<!-- that they are highlighted in red-->
+b++
+</code></p>
+
+<pre><code>combined = 5 + a;
+a = b + 1;
+cout &lt;&lt; a &lt;&lt; b;
+</code></pre>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>b) Explain why the header file functions contain no formal parameters.</p>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>c) Explain the purpose of the integer parameters in the declaration Weight operator++(int);</p>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>d) Complete the class by providing an appropriate weight.cpp file.</p>
+
+<h1>Question 2</h1>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>a) Describe the syntax and use of Abstract Classes in C++ with the aid
+of an example. Explain what benefits they bring.</p>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>b) Consider the C++ code below. Explain carefully the order of
+Constructor calls and deduce the program's output.</p>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>c) How will the output change if inheritance is virtual?</p>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>d) Explain the effect of making the destructor of class Game
+non-virtual.</p>
+
+<blockquote>
+  <p>Deletion of d instead of score.</p>
+</blockquote>
+
+<p>e) Why is the pattern of inheritance adopted below a dangerous one to
+employ?</p>
+
+<pre><code>class Game {
+    Game() {}
+        virtual ~Game() { cout &lt;&lt; "Game destructor\n";}
+};
+
+class FirstPerson : public Game {
+public:
+FirstPerson(double d) { score = new double(d); }
+virtual ~FirstPerson() {
+</code></pre>
+
+<p><code class="error">
+delete d;
+</code></p>
+
+<pre><code>cout &lt;&lt; "FP destructor\n";}
+protected:
+double* score;
+};
+
+class Shoot : public Game {
+public:
+Shoot(int a) {ammo = new int(a);}
+virtual ~Shoot() {delete ammo; cout &lt;&lt; "Shoot destructor\n";}
+protected:
+int* ammo;
+};
+
+class FPShooter: public Shoot, public FirstPerson {
+public:
+FPShooter(double d, int a):FirstPerson(d), Shoot(a) {}
+virtual ~FPShooter() {cout &lt;&lt; "FPShooter destructor\n";}
+};
+
+void main() {
+Game* g = new FirstPerson(2.7);
+FPShooter* fps = new FPShooter(3.5, 6);
+delete g;
+delete fps;
+}
+</code></pre>
+
+<h1>Question 3</h1>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>a) For each of the following declarations describe the data structure
+that results and the state whether data is stored on the stack or the
+heap. (You may draw diagrams to clarify your explanations if you
+wish).</p>
+
+<pre><code>int a;
+int *b = new int(5);
+double c[4];
+double *d[4];
+int (*e)[4];
+char *(*f)[];
+</code></pre>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>b) Consider the following fragment of code:</p>
+
+<pre><code>const int LEN = 5;
+int v[LEN];
+    int *pv1 = v;
+        for(int i = 0; i &lt; LEN; i++) {
+            v[i] = i + 1;
+}
+    int *pv2 = &amp;v[3];
+        int *pv3 = pv1 + 3;
+</code></pre>
+
+<p>What are the values of *pv1, *pv2 and *pv3?</p>
+
+<blockquote>
+  <p>nil.</p>
+</blockquote>
+
+<p>c) What do the different uses of const tell the compiler in the three
+declarations below:</p>
+
+<pre><code>const int *pi1;
+int* const pi2;
+int Boat::maxFuel() const; //Method of Boat class
+</code></pre>
+
+<blockquote>
+  <p>upDateVel has the wrong case compared to the one used int he function.</p>
+</blockquote>
+
+<p>d) A programmer is creating a game in which players race Cars and has
+created the following class:</p>
+
+<pre><code>Class Car {
+public:
+    Car();
+</code></pre>
+
+<p><code class="error">
+void upDateVel(double newVelocity);
+</code></p>
+
+<pre><code>private:
+    double* velocity;
+};
+</code></pre>
+
+<p>There are never more than 30 cars racing at any one time but there may
+be less. A linked list class AllCars has been created and is used by
+the following function.</p>
+
+<pre><code>AllCars* addCar(int noCars) {
+    AllCars* list = new AllCars();
+for(int i = 0; i &lt; noOfCars; i++) {
+    Car c = new Car();
+        list-&gt;add(c);
+}
+
+return list;
+
+}
+</code></pre>
+
+<p>For testing purposes the programmer uses a random number generator to
+alter the velocity for each Car to update it's velocity:</p>
+
+<pre><code>void testUpdate(AllCars* cars) {
+while(cars-&gt;car != NULL) {
+
+double v = rand(); // random no generator
+cars-&gt;car-&gt;updateVel(v);
+    cars-&gt;car = cars-&gt;car-&gt;next;
+}
+}
+</code></pre>
+
+<p>Propose reasons why this way of updating individual velocities is
+inefficient and suggest any possible improvements.</p>
