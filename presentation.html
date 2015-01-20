@@ -32,6 +32,13 @@
 convenience before every question.</p>
 </blockquote>
 
+<blockquote>
+  <p>Was having two constructors with default parameters intential? Because having Weight(const int = 0) breaks
+    three quarters of the code, since Weight a(12) won't even work. Having to identify this much amount of code and
+    correct it if Weight(const int = 0) was intential seems too much for 15 marks question.
+  </p>
+</blockquote>
+
 <p>A class has been defined that deals with the weights of characters in a role playing game using the imperial system (where there are 14 pounds in a stone). The implementations of the operators use only simple integer arithmetic and assume the compiler turns integers into a class constant using the Weight constructor when it is appropriate to do so. The class header file is as follows (you may assume appropriate header guards will be inserted).</p>
 
 <pre><code>#include &lt;iostream&gt;
